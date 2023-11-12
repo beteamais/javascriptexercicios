@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2 - IMC</title>
+</head>
+<body>
+    <h1>IMC</h1>
+    <label for="id_peso">Peso:</label>
+    <input type="text" id="id_peso">
+    <br>
+    <label for="id_altura">Altura:</label>
+    <input type="text" id="id_altura">
+    <br>
+    <button onclick="calcular()">Calcular IMC</button>
+    <br>
+    <p>IMC: <input type="text" id="id_imc" disabled></p>
+    <p>Situação: <input type="text" id="id_situacao" disabled></p>
+    <script>
+        function calcular() {
+            let peso = parseFloat(document.getElementById('id_peso').value);
+    console.log(peso);        
+            let altura = parseFloat(document.getElementById('id_altura').value);
+            let imc = peso / (altura * altura);
+
+            document.getElementById('id_imc').value = imc.toFixed(2);
+            let situacao = '';
+            let cor = 'black';
+            if (imc <17) {
+                situacao = 'Muito abaixo do peso';
+                cor = 'red';
+            }  else if (imc < 18.50){
+                situacao = 'Abaixo do peso';
+                cor = 'orange';
+            }   else if (imc < 25){
+                situacao = 'Peso normal';
+                cor = 'green';
+            }   else if (imc < 30){
+                situacao = 'Acima do peso';
+                cor = 'orange';
+            }   else if (imc < 35){
+                situacao = 'Obesidade I';
+                cor = 'red';
+            }   else if (imc < 40){
+                situacao = 'Obesidade II (severa)';
+                cor = 'red';
+            }   else {
+                situacao = 'Obesidade III (mórbida)';
+                cor = 'red';
+            }
+            document.getElementById('id_situacao').value = situacao;
+            document.getElementById('id_situacao').style.color = cor;
+        }
+    </script>
+    <a href="../index.html">Retornar para Exercícios de Javascript</a>
+</body>
+</html>
